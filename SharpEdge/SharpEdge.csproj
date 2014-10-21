@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDE55D52-B4AF-491E-8C6B-ACCFABAC6435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrueClarity.Web.EdgeCaching</RootNamespace>
+    <AssemblyName>TrueClarity.Web.EdgeCaching</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\EdgeFilterElement.cs" />
+    <Compile Include="Configuration\EdgeIdentifierElement.cs" />
+    <Compile Include="Configuration\EdgeFilterElementCollection.cs" />
+    <Compile Include="Configuration\EdgeIdentifierElementCollection.cs" />
+    <Compile Include="Configuration\EdgeCacheRuleElement.cs" />
+    <Compile Include="Configuration\EdgeCacheRuleElementCollection.cs" />
+    <Compile Include="Configuration\EdgeCacheSection.cs" />
+    <Compile Include="Configuration\EdgeStoreElement.cs" />
+    <Compile Include="Configuration\EdgeStoreElementCollection.cs" />
+    <Compile Include="Configuration\RegexEdgeFilterGroupElement.cs" />
+    <Compile Include="Configuration\RegexEdgeFilterGroupElementCollection.cs" />
+    <Compile Include="Configuration\RegexEdgeFilterSection.cs" />
+    <Compile Include="Configuration\RegexPatternElement.cs" />
+    <Compile Include="Configuration\RegexPatternElementCollection.cs" />
+    <Compile Include="IEdgeStore.cs" />
+    <Compile Include="IEdgeFilter.cs" />
+    <Compile Include="IEdgeIdentifier.cs" />
+    <Compile Include="DynamicInvoke.cs" />
+    <Compile Include="EdgeCache.cs" />
+    <Compile Include="EdgeCacheConfiguration.cs" />
+    <Compile Include="EdgeCacheEventArgs.cs" />
+    <Compile Include="EdgeCacheRule.cs" />
+    <Compile Include="RegexEdgeFilterGroup.cs" />
+    <Compile Include="OriginUrl.cs" />
+    <Compile Include="OriginUrlQuery.cs" />
+    <Compile Include="EdgeCachingModule.cs" />
+    <Compile Include="OriginUrlEdgeIdentifier.cs" />
+    <Compile Include="ClientCacheEdgeStore.cs" />
+    <Compile Include="OutputCacheEdgeStore.cs" />
+    <Compile Include="OutputCacheKeyBuilder.cs" />
+    <Compile Include="OutputCacheSnapshot.cs" />
+    <Compile Include="RegexEdgeFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

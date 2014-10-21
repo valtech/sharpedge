@@ -1,0 +1,7 @@
+syntax: glob
+packages/*
+SharpEdge.Demo/*
+SharpEdge/bin/*
+SharpEdge/obj/*
+SharpEdge/About.txt
+*.suo
