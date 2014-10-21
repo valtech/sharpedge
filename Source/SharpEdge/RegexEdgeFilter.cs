@@ -11,7 +11,7 @@ namespace SharpEdge
 {
 	public class RegexEdgeFilter : IEdgeFilter
 	{
-		private const string SectionName = "SharpEdge/regexEdgeFilter";
+		private const string SectionName = "sharpEdgeRegexFilter";
 
 		private ConcurrentDictionary<string, RegexEdgeFilterGroup>
 			_groups = new ConcurrentDictionary<string, RegexEdgeFilterGroup>(StringComparer.OrdinalIgnoreCase);
