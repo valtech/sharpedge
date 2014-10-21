@@ -7,8 +7,8 @@
     <ProjectGuid>{BDE55D52-B4AF-491E-8C6B-ACCFABAC6435}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrueClarity.Web.EdgeCaching</RootNamespace>
-    <AssemblyName>TrueClarity.Web.EdgeCaching</AssemblyName>
+    <RootNamespace>SharpEdge</RootNamespace>
+    <AssemblyName>SharpEdge</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,7 +34,6 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\EdgeFilterElement.cs" />
