@@ -3,7 +3,7 @@
 	<metadata>
 		<id>SharpEdge</id>
 		<title>SharpEdge</title>
-		<version>1.2.0</version>
+		<version>1.2.1</version>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>SharpEdge advanced output caching for ASP.NET</description>
 		<projectUrl>https://code.google.com/p/sharpedge/</projectUrl>
