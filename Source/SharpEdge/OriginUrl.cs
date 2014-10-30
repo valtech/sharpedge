@@ -43,6 +43,11 @@ namespace SharpEdge
 				}
 			}
 
+			if (_path != null)
+			{
+				_path = _path.TrimEnd('/');
+			}
+
 			_query = new OriginUrlQuery(url);
 		}
 
@@ -58,6 +63,9 @@ namespace SharpEdge
 			return new OriginUrl(url);
 		}
 		
+		/// <summary>
+		/// The query string portion of the URL.
+		/// </summary>
 		public OriginUrlQuery Query
 		{
 			get
@@ -66,6 +74,9 @@ namespace SharpEdge
 			}
 		}
 
+		/// <summary>
+		/// The part of the URL before the query string.
+		/// </summary>
 		public string Path
 		{
 			get
@@ -78,6 +89,9 @@ namespace SharpEdge
 			}
 		}
 
+		/// <summary>
+		/// The part of the URL after the anchor #.
+		/// </summary>
 		public string Fragment
 		{
 			get
@@ -90,6 +104,9 @@ namespace SharpEdge
 			}
 		}
 
+		/// <summary>
+		/// The part of the URL before the anchor #.
+		/// </summary>
 		public string PathAndQuery
 		{
 			get
@@ -98,11 +115,17 @@ namespace SharpEdge
 			}
 		}
 
+		/// <summary>
+		/// Returns the full URL as a string.
+		/// </summary>
 		public override string ToString()
 		{
 			return PathAndQuery + Fragment;
 		}
 
+		/// <summary>
+		/// Casts the full URL to a string.
+		/// </summary>
 		public static implicit operator string(OriginUrl url)
 		{
 			return url.ToString();
