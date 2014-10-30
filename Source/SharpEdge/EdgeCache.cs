@@ -31,6 +31,19 @@ namespace SharpEdge
 
 		}
 
+		public EdgeCacheRule Rule(string name)
+		{
+			foreach (EdgeCacheRule rule in _rules)
+			{
+				if (String.Equals(rule.Name, name, StringComparison.InvariantCultureIgnoreCase))
+				{
+					return rule;
+				}
+			}
+
+			return null;
+		}
+
 		public IEnumerable<EdgeCacheRule> Rules()
 		{
 			return _rules;
