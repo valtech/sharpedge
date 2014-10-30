@@ -1,7 +1,11 @@
 syntax: glob
 packages/*
-SharpEdge.Demo/*
+SharpEdge.Demo*
 SharpEdge/bin/*
 SharpEdge/obj/*
 SharpEdge/About.txt
 *.suo
+Nuspec/*.bat
+Nuspec/*.exe
+Nuspec/*.nupkg
+*.user
