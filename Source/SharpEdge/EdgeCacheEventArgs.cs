@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SharpEdge
 {
-	public sealed class EdgeCacheEventArgs : EventArgs
+	public class EdgeCacheEventArgs : EventArgs
 	{
 		private HttpContext _context;
 

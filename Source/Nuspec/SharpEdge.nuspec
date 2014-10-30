@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>SharpEdge</id>
+		<title>SharpEdge</title>
+		<version>1.2.0</version>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>SharpEdge advanced output caching for ASP.NET</description>
+		<projectUrl>https://code.google.com/p/sharpedge/</projectUrl>
+		<authors>True Clarity</authors>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Core" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Web" targetFramework="" />
+		</frameworkAssemblies>
+	</metadata>
+	<files>
+		<file src="..\SharpEdge\bin\Debug\SharpEdge.dll" target="lib\net40" />
+	</files>
+</package>

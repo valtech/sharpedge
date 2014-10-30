@@ -4,7 +4,7 @@ using System.Web.Caching;
 
 namespace SharpEdge
 {
-	public sealed class OutputCacheEdgeStore : IEdgeStore
+	public class OutputCacheEdgeStore : IEdgeStore
 	{
 		private const string DateTimeFormat = "dd/MMM/yyyy HH:mm:ss";
 		private const string DependencyKey = "_!XEdgeDependency";
@@ -23,12 +23,12 @@ namespace SharpEdge
 		{
 			UpdateCacheDependency(DependencyKey);
 			
-			rule.ResolveRequestCache += OnEnter;
+			rule.ResolveRequestCache += OnResolveRequestCache;
 
-			rule.UpdateRequestCache += OnLeave;
+			rule.UpdateRequestCache += OnUpdateRequestCache;
 		}
 
-		private void OnEnter(object sender, EdgeCacheEventArgs e)
+		private void OnResolveRequestCache(object sender, EdgeCacheEventArgs e)
 		{
 			EdgeCacheRule rule = (EdgeCacheRule)sender;
 
@@ -61,11 +61,18 @@ namespace SharpEdge
 
 				response.AddHeader("X-Edge", snapshot.Description);
 
+				OnPreSendSnapshot(new EdgeCacheRuleEventArgs(e.Context, rule));
+
 				context.ApplicationInstance.CompleteRequest();
 			}
 		}
 
-		private void OnLeave(object sender, EdgeCacheEventArgs e)
+		protected virtual void OnPreSendSnapshot(EdgeCacheRuleEventArgs args)
+		{
+
+		}
+
+		private void OnUpdateRequestCache(object sender, EdgeCacheEventArgs e)
 		{
 			EdgeCacheRule rule = (EdgeCacheRule)sender;
 

@@ -50,6 +50,7 @@
     <Compile Include="Configuration\RegexEdgeFilterSection.cs" />
     <Compile Include="Configuration\RegexPatternElement.cs" />
     <Compile Include="Configuration\RegexPatternElementCollection.cs" />
+    <Compile Include="EdgeCacheRuleEventArgs.cs" />
     <Compile Include="IEdgeStore.cs" />
     <Compile Include="IEdgeFilter.cs" />
     <Compile Include="IEdgeIdentifier.cs" />
