@@ -5,12 +5,19 @@ using System.Web;
 
 namespace SharpEdge
 {
+	/// <summary>
+	/// Represents a URL request to the application layer.
+	/// </summary>
 	public sealed class OriginUrl
 	{
 		private string _path;
 		private string _fragment;
 		private OriginUrlQuery _query;
 
+		/// <summary>
+		/// Create a new URL.
+		/// </summary>
+		/// <param name="url">The raw URL.</param>
 		public OriginUrl(string url)
 		{
 			if (url == null)
@@ -51,6 +58,11 @@ namespace SharpEdge
 			_query = new OriginUrlQuery(url);
 		}
 
+		/// <summary>
+		/// Get the URL for the currently executing request.
+		/// </summary>
+		/// <param name="context">The current <see cref="HttpContext" />.</param>
+		/// <returns>The URL for the currently executing request.</returns>
 		public static OriginUrl CurrentUrl(HttpContext context)
 		{
 			string url = context.Request.RawUrl;
