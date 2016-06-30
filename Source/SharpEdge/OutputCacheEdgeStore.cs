@@ -7,25 +7,30 @@ namespace SharpEdge
 	public class OutputCacheEdgeStore : IEdgeStore
 	{
 		private const string DateTimeFormat = "dd/MMM/yyyy HH:mm:ss";
-		private const string DependencyKey = "_!XEdgeDependency";
+		private const string DependencyKeyPrefix = "_!XEdgeDependency:OutputCacheEdgeStore";
 
 		void IEdgeStore.Clear(EdgeCacheRule rule)
 		{
-			UpdateCacheDependency(DependencyKey);
+			UpdateCacheDependency(rule);
 		}
 
-		private void UpdateCacheDependency(string name)
+		private void UpdateCacheDependency(EdgeCacheRule rule)
 		{
-			HttpRuntime.Cache.Insert(name, new object(), null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration, CacheItemPriority.NotRemovable, null);
+			HttpRuntime.Cache.Insert(DependencyKeyFromRule(rule), new object(), null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration, CacheItemPriority.NotRemovable, null);
 		}
 
 		void IEdgeStore.Initialize(EdgeCacheRule rule)
 		{
-			UpdateCacheDependency(DependencyKey);
+			UpdateCacheDependency(rule);
 			
 			rule.ResolveRequestCache += OnResolveRequestCache;
 
 			rule.UpdateRequestCache += OnUpdateRequestCache;
+		}
+
+		private static string DependencyKeyFromRule(EdgeCacheRule rule)
+		{
+			return String.Format("{0}/{1}", DependencyKeyPrefix, rule.Name);
 		}
 
 		private void OnResolveRequestCache(object sender, EdgeCacheEventArgs e)
@@ -98,16 +103,17 @@ namespace SharpEdge
 
 			if (rule.Debug)
 			{
-				response.Write("\r\n<!--Served from edge at " + TimeStamp + "-->");
+				response.Write("\r\n<!--Served from edge at " + TimeStamp + " by rule " + rule.Name + "-->");
 
 				response.AddHeader("X-Edge-Modified", TimeStamp);
+				response.AddHeader("X-Edge-Rule", rule.Name);
 			}
 
 			object rawResponse = invoker.Call("GetSnapshot");
 
 			string cacheKey = keyBuilder.GetResponseCacheKey(rule.CacheKeyStamp(context));
 
-			CacheDependency dependency = new CacheDependency(null, new string[] { DependencyKey });
+			CacheDependency dependency = new CacheDependency(null, new string[] { DependencyKeyFromRule(rule) });
 
 			OutputCacheSnapshot snapshot = new OutputCacheSnapshot(rawResponse);
 

@@ -194,9 +194,9 @@ namespace SharpEdge
 
 		public void Clear()
 		{
-			foreach (IEdgeStore filter in Stores())
+			foreach (IEdgeStore store in Stores())
 			{
-				filter.Clear(this);
+				store.Clear(this);
 			}
 		}
 
